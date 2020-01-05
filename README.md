@@ -5,11 +5,22 @@ JSON Codable is what we need 90% of the time.
 ## Usage
 
 ```swift
-struct Filter: JSONEncodable {
+struct Filter: JSONCodable {
   let id: String
 }
 
 let jsonString = Filter(id: "foo").toJSON()
+```
+
+or use `CodableFormat`:
+
+```
+struct Filter: Codable {
+  let id: String
+}
+
+let data = try Filter(id: "foo").to(.json)
+let filter = try Filter.from(data, format: .json)
 ```
 
 ## Installation
