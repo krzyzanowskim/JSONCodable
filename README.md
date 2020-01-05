@@ -14,7 +14,7 @@ let jsonString = Filter(id: "foo").toJSON()
 
 or use `CodableFormat`:
 
-```
+```swift
 struct Filter: Codable {
   let id: String
 }
