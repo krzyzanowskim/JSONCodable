@@ -13,7 +13,7 @@ public extension JSONEncodable {
 public protocol JSONDecodable: Decodable { }
 
 public extension JSONDecodable {
-  func from(json data: Data) throws -> Self {
+  static func from(json data: Data) throws -> Self {
     try JSONDecoder().decode(Self.self, from: data)
   }
 }
