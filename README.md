@@ -9,7 +9,7 @@ struct Filter: JSONCodable {
   let id: String
 }
 
-let jsonString = Filter(id: "foo").toJSON()
+let jsonString = try Filter(id: "foo").toJSON()
 ```
 
 or use `CodableFormat`:
