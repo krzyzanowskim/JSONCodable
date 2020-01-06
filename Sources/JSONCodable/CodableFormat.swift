@@ -38,6 +38,24 @@ public struct CodableFormat: Identifiable {
   public static let plist = CodableFormat("plist", PropertyListEncoder(), PropertyListDecoder())
 }
 
+public extension CodableFormat {
+
+  private static var jsonSnakeCaseEncoder: JSONEncoder {
+    let encoder = JSONEncoder()
+    encoder.keyEncodingStrategy = .convertToSnakeCase
+    return encoder
+  }
+
+  private static var jsonSnakeCaseDecoder: JSONDecoder {
+    let decoder = JSONDecoder()
+    decoder.keyDecodingStrategy = .convertFromSnakeCase
+    return decoder
+  }
+
+  // Custom format
+  static let jsonSnakeCase = CodableFormat("jsonSnakeCase", jsonSnakeCaseEncoder, jsonSnakeCaseDecoder)
+}
+
 public extension Encodable {
   func to(_ format: CodableFormat) throws -> Data {
     try format.encoder.encode(self)

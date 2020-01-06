@@ -1,24 +1,6 @@
 import XCTest
 @testable import JSONCodable
 
-private extension CodableFormat {
-
-  private static var jsonSnakeCaseEncoder: JSONEncoder {
-    let encoder = JSONEncoder()
-    encoder.keyEncodingStrategy = .convertToSnakeCase
-    return encoder
-  }
-
-  private static var jsonSnakeCaseDecoder: JSONDecoder {
-    let decoder = JSONDecoder()
-    decoder.keyDecodingStrategy = .convertFromSnakeCase
-    return decoder
-  }
-
-  // Custom format
-  static let jsonSnakeCase = CodableFormat("jsonSnakeCase", jsonSnakeCaseEncoder, jsonSnakeCaseDecoder)
-}
-
 final class JSONCodableTests: XCTestCase {
 
   func testJSONCodable1() throws {
