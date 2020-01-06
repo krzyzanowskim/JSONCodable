@@ -5,16 +5,16 @@ import Foundation
 public protocol JSONEncodable: Encodable { }
 
 public extension JSONEncodable {
-  func toJSON() throws -> String? {
-    try String(data: JSONEncoder().encode(self), encoding: .utf8)
+  func toJSON(jsonEncoder: JSONEncoder = JSONEncoder()) throws -> String? {
+    try String(data: jsonEncoder.encode(self), encoding: .utf8)
   }
 }
 
 public protocol JSONDecodable: Decodable { }
 
 public extension JSONDecodable {
-  static func from(json data: Data) throws -> Self {
-    try JSONDecoder().decode(Self.self, from: data)
+  static func from(json data: Data, jsonDecoder: JSONDecoder = JSONDecoder()) throws -> Self {
+    try jsonDecoder.decode(Self.self, from: data)
   }
 }
 
