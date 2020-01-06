@@ -5,8 +5,8 @@ import Foundation
 public protocol JSONEncodable: Encodable { }
 
 public extension JSONEncodable {
-  func toJSON(jsonEncoder: JSONEncoder = JSONEncoder()) throws -> String? {
-    try String(data: jsonEncoder.encode(self), encoding: .utf8)
+  func toJSON(jsonEncoder: JSONEncoder = JSONEncoder()) throws -> String {
+    try String(decoding: jsonEncoder.encode(self), as: UTF8.self)
   }
 }
 
