@@ -59,7 +59,7 @@ Copy `JSONCodable.swift` to your project, or
 To depend on the package, you need to declare your dependency in your `Package.swift`:
 
 ```swift
-.package(url: "https://github.com/krzyzanowskim/JSONCodable.git", from: "1.0.0"),
+.package(url: "https://github.com/krzyzanowskim/JSONCodable.git", from: "1.2.0"),
 ```
 
 and to your application/library target, add "JSONCodable" to your dependencies, e.g. like this:
