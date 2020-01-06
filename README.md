@@ -23,6 +23,33 @@ let data = try Filter(id: "foo").to(.json)
 let filter = try Filter.from(data, format: .json)
 ```
 
+### Custom format
+
+To add custom format, add it to `CodableFormat` like this: 
+
+```swift
+extension CodableFormat {
+
+  private static var jsonSnakeCaseEncoder: JSONEncoder {
+    let encoder = JSONEncoder()
+    encoder.keyEncodingStrategy = .convertToSnakeCase
+    return encoder
+  }
+
+  private static var jsonSnakeCaseDecoder: JSONDecoder {
+    let decoder = JSONDecoder()
+    decoder.keyDecodingStrategy = .convertFromSnakeCase
+    return decoder
+  }
+
+  // Custom format
+  static let jsonSnakeCase = CodableFormat("jsonSnakeCase", jsonSnakeCaseEncoder, jsonSnakeCaseDecoder)
+}
+
+// use jsonSnakeCase format
+let json = try F.to(.jsonSnakeCase)
+```
+
 ## Installation
 
 Copy `JSONCodable.swift` to your project, or
