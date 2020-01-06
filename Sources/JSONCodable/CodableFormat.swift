@@ -28,10 +28,10 @@ public struct CodableFormat: Identifiable {
   let encoder: FoundationEncoder
   let decoder: FoundationDecoder
 
-  public init<F: FoundationEncoder, D: FoundationDecoder>(_ id: ID, _ encoder: F, _ decoder: D) {
+  public init<F: FoundationEncoder, D: FoundationDecoder>(_ id: ID, _ encoder: @autoclosure () -> F, _ decoder: @autoclosure () -> D) {
     self.id = id
-    self.encoder = encoder
-    self.decoder = decoder
+    self.encoder = encoder()
+    self.decoder = decoder()
   }
 
   public static let json = CodableFormat("json", JSONEncoder(), JSONDecoder())

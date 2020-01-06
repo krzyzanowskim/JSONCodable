@@ -11,6 +11,9 @@ let package = Package(
     targets: [
         .target(
             name: "JSONCodable",
-            dependencies: [])
+            dependencies: []),
+        .testTarget(
+            name: "JSONCodableTests",
+            dependencies: ["JSONCodable"]),
     ]
 )
