@@ -47,7 +47,7 @@ extension CodableFormat {
 }
 
 // use jsonSnakeCase format
-let json = try F.to(.jsonSnakeCase)
+let json = try Filter(id: "foo").to(.jsonSnakeCase)
 ```
 
 ## Installation
