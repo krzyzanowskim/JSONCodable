@@ -66,4 +66,8 @@ public extension Decodable {
   static func from(_ data: Data, format: CodableFormat) throws -> Self {
     try format.decoder.decode(Self.self, from: data)
   }
+
+  static func from(_ string: String, format: CodableFormat) throws -> Self {
+    try self.from(Data(string.utf8), format: format)
+  }
 }
